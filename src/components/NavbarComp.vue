@@ -1,4 +1,5 @@
 <template>
+  <!-- todo: use toolbar -->
   <v-app-bar app color="transparent" flat height="80px">
     <v-btn text>
       <v-icon
