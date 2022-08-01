@@ -48,62 +48,90 @@
               lg="4"
             >
               <!-- Replace Card-->
-              <v-card
-                class="my-12 rounded-xl"
-                outlined
-                style="position: relative"
-              >
-                <v-img
-                  lazy-src="https://picsum.photos/id/11/100/60"
-                  height="300"
-                  :src="item.image"
-                  alt="img"
+              <v-hover v-slot="{ hover }">
+                <v-card
+                  class="rounded-xl mt-3"
+                  outlined
+                  :elevation="hover ? 12 : 0"
+                  :class="{ 'on-hover': hover }"
                 >
-                  <template v-slot:placeholder>
-                    <v-row
-                      class="fill-height ma-0"
-                      align="center"
-                      justify="center"
-                    >
-                      <v-progress-circular
-                        indeterminate
-                        color="grey lighten-5"
-                      ></v-progress-circular>
+                  <v-img :src="item.image" :alt="item.title" height="300px">
+                    <v-row class="fill-height">
+                      <v-card-title>
+                        <v-btn
+                          dark
+                          icon
+                          class="mr-4"
+                          :class="{ 'show-btns': hover }"
+                          :color="transparent"
+                        >
+                          <v-icon
+                            :class="{ 'show-btns': hover }"
+                            :color="transparent"
+                            size="27"
+                            >mdi-chevron-double-left</v-icon
+                          >
+                        </v-btn>
+
+                        <v-spacer></v-spacer>
+
+                        <v-btn
+                          icon
+                          class="mr-4"
+                          :class="{ 'show-btns': hover }"
+                          :color="transparent"
+                        >
+                          <v-icon
+                            :class="{ 'show-btns': hover }"
+                            :color="transparent"
+                            >mdi-heart-plus</v-icon
+                          >
+                        </v-btn>
+
+                        <v-btn
+                          icon
+                          :class="{ 'show-btns': hover }"
+                          :color="transparent"
+                        >
+                          <v-icon
+                            :class="{ 'show-btns': hover }"
+                            :color="transparent"
+                            >mdi-github</v-icon
+                          >
+                        </v-btn>
+                      </v-card-title>
+
+                      <v-spacer></v-spacer>
+
+                      <v-card-title
+                        class="mx-auto my-auto secondary--text bold"
+                      >
+                        <div class="font-weight-bold headline">
+                          {{ item.title }}
+                        </div>
+                      </v-card-title>
                     </v-row>
-                  </template>
-                </v-img>
+                  </v-img>
 
-                <v-icon
-                  size="40"
-                  color="secondary light-4"
-                  style="position: absolute; top: 10px; right: 10px"
-                  >mdi-github</v-icon
-                >
+                  <v-card-text class="text-center">
+                    <p class="my-2 text-subtitle-1">{{ item.type }}</p>
+                  </v-card-text>
 
-                <v-card-title class="d-flex justify-center">
-                  <span>{{ item.title }}</span>
-                  <v-icon class="mt-1" right size="25" color="secondary"
-                    >mdi-chevron-double-right</v-icon
-                  >
-                </v-card-title>
+                  <v-divider class="mx-4"></v-divider>
 
-                <v-card-text class="text-center">
-                  <p class="my-2 text-subtitle-1">{{ item.type }}</p>
-                </v-card-text>
-
-                <v-divider class="mx-4"></v-divider>
-
-                <v-card-text>
-                  <v-chip-group active-class="primary--text" column>
-                    <v-chip>Vue</v-chip>
-                    <v-chip>Django</v-chip>
-                    <v-chip>AWS</v-chip>
-                    <v-chip>Cookiecutter</v-chip>
-                    <v-chip>Django Rest Api</v-chip>
-                    <v-chip>Vuetify</v-chip>
-                  </v-chip-group>
-                </v-card-text>
-              </v-card>
+                  <v-card-text>
+                    <v-chip-group active-class="primary--text" column>
+                      <v-chip>Vue</v-chip>
+                      <v-chip>Django</v-chip>
+                      <v-chip>AWS</v-chip>
+                      <v-chip>Cookiecutter</v-chip>
+                      <v-chip>Django Rest Api</v-chip>
+                      <v-chip>Vuetify</v-chip>
+                    </v-chip-group>
+                  </v-card-text>
+                </v-card>
+              </v-hover>
+              <!-- Replace Card-->
             </v-col>
           </v-row>
         </template>
@@ -141,113 +169,29 @@
             <span class="mr-4 grey--text">
               Page {{ page }} of {{ numberOfPages }}
             </span>
-            <v-btn fab small color="accent" class="mr-1" @click="formerPage">
+            <v-btn
+              fab
+              small
+              color="accent"
+              outlined
+              class="mr-1"
+              @click="formerPage"
+            >
               <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
-            <v-btn fab small color="accent" class="ml-3 mr-3" @click="nextPage">
+            <v-btn
+              fab
+              small
+              color="accent"
+              outlined
+              class="ml-3 mr-3"
+              @click="nextPage"
+            >
               <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
           </v-row>
         </template>
       </v-data-iterator>
-    </v-col>
-    <v-col cols="12">
-      <v-card max-width="375" class="mx-auto">
-        <v-img
-          src="https://cdn.vuetifyjs.com/images/lists/ali.png"
-          height="300px"
-          dark
-        >
-          <v-row class="fill-height">
-            <v-card-title>
-              <v-btn dark icon>
-                <v-icon>mdi-chevron-left</v-icon>
-              </v-btn>
-
-              <v-spacer></v-spacer>
-
-              <v-btn dark icon class="mr-4">
-                <v-icon>mdi-pencil</v-icon>
-              </v-btn>
-
-              <v-btn dark icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-              </v-btn>
-            </v-card-title>
-
-            <v-spacer></v-spacer>
-
-            <v-card-title class="white--text pl-12 pt-12">
-              <div class="text-h4 pl-12 pt-12">Ali Conners</div>
-            </v-card-title>
-          </v-row>
-        </v-img>
-
-        <v-list two-line>
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="indigo"> mdi-phone </v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>(650) 555-1234</v-list-item-title>
-              <v-list-item-subtitle>Mobile</v-list-item-subtitle>
-            </v-list-item-content>
-
-            <v-list-item-icon>
-              <v-icon>mdi-message-text</v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-action></v-list-item-action>
-
-            <v-list-item-content>
-              <v-list-item-title>(323) 555-6789</v-list-item-title>
-              <v-list-item-subtitle>Work</v-list-item-subtitle>
-            </v-list-item-content>
-
-            <v-list-item-icon>
-              <v-icon>mdi-message-text</v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-
-          <v-divider inset></v-divider>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="indigo"> mdi-email </v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>aliconnors@example.com</v-list-item-title>
-              <v-list-item-subtitle>Personal</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-action></v-list-item-action>
-
-            <v-list-item-content>
-              <v-list-item-title>ali_connors@example.com</v-list-item-title>
-              <v-list-item-subtitle>Work</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-divider inset></v-divider>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon color="indigo"> mdi-map-marker </v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>1400 Main Street</v-list-item-title>
-              <v-list-item-subtitle>Orlando, FL 79938</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-card>
     </v-col>
   </v-row>
 </template>
@@ -308,52 +252,11 @@ export default {
         github: "https://github.com/",
       },
     ],
-    items: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        sodium: 87,
-        calcium: "14%",
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        sodium: 129,
-        calcium: "8%",
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        sodium: 337,
-        calcium: "6%",
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        sodium: 413,
-        calcium: "3%",
-        iron: "8%",
-      },
-    ],
+    transparent: "rgba(255, 255, 255, 0)",
   }),
   computed: {
     numberOfPages() {
-      return Math.ceil(this.items.length / this.itemsPerPage);
+      return Math.ceil(this.projects.length / this.itemsPerPage);
     },
     filteredKeys() {
       return this.keys.filter((key) => key !== "Name");
@@ -372,3 +275,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.v-card {
+  transition: opacity 0.4s ease-in-out;
+}
+
+.v-card:not(.on-hover) {
+  opacity: 0.6;
+}
+
+.show-btns {
+  color: rgba(255, 255, 255, 1) !important;
+}
+</style>
