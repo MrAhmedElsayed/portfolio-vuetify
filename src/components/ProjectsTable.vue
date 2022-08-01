@@ -193,6 +193,18 @@
         </template>
       </v-data-iterator>
     </v-col>
+    <v-col>
+      <v-progress-circular
+        :value="20"
+        :size="100"
+        :width="15"
+        color="blue-grey"
+      >
+        <v-btn icon>
+          <v-icon size="60">mdi-arrow-up</v-icon>
+        </v-btn>
+      </v-progress-circular>
+    </v-col>
   </v-row>
 </template>
 
