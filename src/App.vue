@@ -8,6 +8,7 @@
         <v-scale-transition>
           <router-view></router-view>
         </v-scale-transition>
+        <BackToUp />
       </v-container>
     </v-main>
     <v-footer dark padless class="mt-5">
@@ -43,12 +44,13 @@
 
 <script>
 import NavbarComp from "./components/NavbarComp.vue";
+import BackToUp from "./components/BackToUp.vue";
 export default {
   name: "App",
   // add scroll functionality: https://vuetifyjs.com/en/features/scrolling/#usage
   data: () => ({
     icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
   }),
-  components: { NavbarComp },
+  components: { NavbarComp, BackToUp },
 };
 </script>

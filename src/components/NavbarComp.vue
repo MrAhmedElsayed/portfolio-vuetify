@@ -1,15 +1,12 @@
 <template>
   <!-- todo: use toolbar -->
   <v-app-bar app color="transparent" flat height="80px">
-    <v-btn text>
-      <v-icon
-        class="ml-10"
-        size="40"
-        :color="$vuetify.theme.dark ? 'orange' : 'secondary'"
-        >mdi-face-agent</v-icon
-      >
-      <span class="headline mr-3 ml-3">Devo</span>
-    </v-btn>
+    <v-img
+      class="ml-10"
+      width="100"
+      src="../assets/devo.png"
+      alt="DEVO LOGO"
+    ></v-img>
 
     <v-tabs class="d-flex justify-space-around">
       <v-tab to="/hello">Projects</v-tab>
@@ -62,7 +59,8 @@
                   hint="example of persistent helper text"
                   persistent-hint
                   required
-                ></v-text-field>
+                >
+                </v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field label="Day*" required></v-text-field>
@@ -96,7 +94,8 @@
       :color="$vuetify.theme.light ? 'accent' : 'orange'"
       off-icon="mdi-weather-night"
       on-icon="mdi-lightbulb-on"
-    ></v-checkbox>
+    >
+    </v-checkbox>
   </v-app-bar>
 </template>
 
@@ -118,12 +117,15 @@ export default {
   0% {
     transform: scale(0);
   }
+
   50% {
     transform: scale(1.2);
   }
+
   70% {
     transform: scale(0.65);
   }
+
   100% {
     transform: scale(0);
   }
